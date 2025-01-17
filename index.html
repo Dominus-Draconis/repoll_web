@@ -49,7 +49,7 @@
             }
             newOption.innerHTML = `
                 <input type="radio" name="quiz_answer" id="quiz${optionCount}"" value=${optionCount} class="answer-checkbox" style="display: ${display};">
-                <input type="text" placeholder="Add Option" oninput="addOption(${optionCount})" id="answer${optionCount}">
+                <input type="text" placeholder="Add Option" oninput="addOption(${optionCount})" id="answer${optionCount}" maxlength="100">
                 <button type="button" class="delete-button" onclick="deleteOption(${optionCount})" tabindex=-1>x</button>
             `;
             document.getElementById('optionsList').appendChild(newOption);
@@ -58,7 +58,7 @@
         
         function deleteOption(index) {
             console.log(index)
-            if (optionCount > 1) {
+            if (optionCount > 0) {
                 document.getElementById(`optionContainer${index}`).remove();
                 optionCount--;
                 updatePlaceholders();
@@ -175,13 +175,13 @@
         </div>
         <div class=block-label>QUESTION</div>
         <div class="poll-title">
-            <input id="title" class="poll-title-input" type="text" dir="auto" aria-label="Ask a Question" placeholder="Ask a Question">
+            <input id="title" class="poll-title-input" type="text" dir="auto" aria-label="Ask a Question" placeholder="Ask a Question" maxlength="255">
         </div>
         <div class="block-label">POLL OPTIONS</div>
         <div class="options-list" id="optionsList">
             <div class="option-container" id="optionContainer0" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
                 <input type="radio" name="quiz_answer" id="quiz0" value="0" class="answer-checkbox" style="display: none;">
-                <input type="text" placeholder="Option" id="answer0" oninput="addOption(0)">
+                <input type="text" placeholder="Option" id="answer0" oninput="addOption(0)" maxlength="100">
                 <button type="button" class="delete-button" onclick="deleteOption(0)" tabindex=-1>x</button>
             </div>
         </div>
@@ -208,7 +208,7 @@
         <div id="quiz-lightbulb" style="display: none;">
         <div class="block-label">EXPLANATION</div>
         <div class="quiz-explanation">
-            <textarea id="lightbulb" placeholder="Add a Comment (Optional)"></textarea>
+            <textarea id="lightbulb" placeholder="Add a Comment (Optional)" maxlength="200"></textarea>
         </div>
         </div>
     </div>
@@ -267,7 +267,7 @@
                     }
                     newOption.innerHTML = `
                         <input type="radio" name="quiz_answer" id="quiz${optionCount}"" value=${optionCount} class="answer-checkbox" style="display: ${display};">
-                        <input type="text" placeholder="Add Option" oninput="addOption(${optionCount})" id="answer${optionCount}" value="${answer}">
+                        <input type="text" placeholder="Add Option" oninput="addOption(${optionCount})" id="answer${optionCount}" value="${answer}" maxlength="100">
                         <button type="button" class="delete-button" onclick="deleteOption(${optionCount})" tabindex=-1>x</button>
                     `;
                     document.getElementById('optionsList').appendChild(newOption);
