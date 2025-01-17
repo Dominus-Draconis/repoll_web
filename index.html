@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="telegram.css">
     <title></title>
     <script>
-        let optionCount = 1;
+        let optionCount = 0;
         const maxOptions = 9;
         
         function addOption(index) {
@@ -73,6 +73,7 @@
             innerTags[0].setAttribute('value', `${index}`)
             innerTags[0].setAttribute('id', `quiz${index}`)
             innerTags[1].setAttribute('oninput', `addOption(${index})`);
+            innerTags[1].setAttribute('id', `answer${index}`)
             innerTags[2].setAttribute('onclick', `deleteOption(${index})`);
             });
         }
@@ -151,7 +152,7 @@
             }
             for (let i = 0; i < 10; i++) {
                 ele = document.getElementById(`answer${i}`)
-                if (ele != null && ele != ''){
+                if (ele != null && ele.value != ''){
                     data += ` -ca "${ele.value}"`;
                 }
             }
@@ -177,11 +178,6 @@
                 <input type="radio" name="quiz_answer" id="quiz0" value="0" class="answer-checkbox" style="display: none;">
                 <input type="text" placeholder="Option" id="answer0" oninput="addOption(0)">
                 <button type="button" class="delete-button" onclick="deleteOption(0)" tabindex=-1>x</button>
-            </div>
-            <div class="option-container" id="optionContainer1" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" ondrop="drop(event)">
-                <input type="radio" name="quiz_answer" id="quiz1" value="1" class="answer-checkbox" style="display: none;">
-                <input type="text" placeholder="Add Option" id="answer1" oninput="addOption(1)">
-                <button type="button" class="delete-button" onclick="deleteOption(1)" tabindex=-1>x</button>
             </div>
         </div>
         <div class="settings">
@@ -246,7 +242,7 @@
             if (params.get(`a${i}`) != null){
                 answer = params.get(`a${i}`)
                 console.log(answer)
-                if (i <= optionCount){
+                if (i == 0){
                     const answer_tag = document.getElementById(`answer${i}`);
                     answer_tag.value = answer;
                 }
@@ -271,28 +267,29 @@
                     `;
                     document.getElementById('optionsList').appendChild(newOption);
                 }
-                if (optionCount < 9){
-                    optionCount++;
-                    const newOption = document.createElement('div');
-                    newOption.classList.add('option-container');
-                    newOption.id = `optionContainer${optionCount}`;
-                    newOption.setAttribute('draggable', 'true');
-                    newOption.setAttribute('ondragstart', 'dragStart(event)');
-                    newOption.setAttribute('ondragover', 'allowDrop(event)');
-                    newOption.setAttribute('ondrop', 'drop(event)');
-                    const quiz = document.getElementById('quiz');
-                    var display = 'none'
-                    if (quiz.checked == true){
-                        display = "inline-block"
-                    }
-                    newOption.innerHTML = `
-                        <input type="radio" name="quiz_answer" id="quiz${optionCount}"" value=${optionCount} class="answer-checkbox" style="display: ${display};">
-                        <input type="text" placeholder="Add Option" oninput="addOption(${optionCount})" id="answer${optionCount}">
-                        <button type="button" class="delete-button" onclick="deleteOption(${optionCount})" tabindex=-1>x</button>
-                    `;
-                    document.getElementById('optionsList').appendChild(newOption);
-                }
+                
+            }
         }
+        if (optionCount < 9){
+            optionCount++;
+            const newOption = document.createElement('div');
+            newOption.classList.add('option-container');
+            newOption.id = `optionContainer${optionCount}`;
+            newOption.setAttribute('draggable', 'true');
+            newOption.setAttribute('ondragstart', 'dragStart(event)');
+            newOption.setAttribute('ondragover', 'allowDrop(event)');
+            newOption.setAttribute('ondrop', 'drop(event)');
+            const quiz = document.getElementById('quiz');
+            var display = 'none'
+            if (quiz.checked == true){
+                display = "inline-block"
+            }
+            newOption.innerHTML = `
+                <input type="radio" name="quiz_answer" id="quiz${optionCount}"" value=${optionCount} class="answer-checkbox" style="display: ${display};">
+                <input type="text" placeholder="Add Option" oninput="addOption(${optionCount})" id="answer${optionCount}">
+                <button type="button" class="delete-button" onclick="deleteOption(${optionCount})" tabindex=-1>x</button>
+            `;
+            document.getElementById('optionsList').appendChild(newOption);
         }
     </script>
 
