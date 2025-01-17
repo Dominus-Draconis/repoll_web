@@ -155,7 +155,6 @@
                     data += ` -ca "${ele.value}"`;
                 }
             }
-            data += ` -o "${options}"`
             Telegram.WebApp.sendData(data);
             Telegram.WebApp.answerWebAppQuerry('1', data)
         }
