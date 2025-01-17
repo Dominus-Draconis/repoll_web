@@ -1,0 +1,164 @@
+body{
+    font-family:Verdana, Geneva, sans-serif;
+    line-height:1.5;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    margin: 10px;
+    padding: 0px;
+}
+
+button{
+    text-align: center;
+    cursor: pointer;
+}
+
+input{
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    width: auto;
+}
+
+input:focus, textarea:focus{
+    outline: none;
+    border: none;
+}
+
+textarea{
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    font-family:Verdana, Geneva, sans-serif;
+}
+
+::placeholder{
+    color: grey;
+}
+
+.poll-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.poll-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.options-list, .poll-title, .settings, .quiz-explanation{
+    background: rgb(73, 73, 73);
+    border-radius: 7px;
+    padding-left: 5px;
+    margin-bottom:10px;
+}
+
+.poll-title-input{
+    padding: 5px;
+}
+
+.option-container{
+    display: flex;
+    position: relative;
+    padding: 3px;
+    border-top: 1px solid rgba(140, 140, 140, 0.5)
+} 
+    
+
+.option-container:first-child {
+    border-top: none;
+}
+
+.option-container:last-child {
+    margin-bottom: 0;
+}
+  
+.delete-button {
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.option-seperator{
+    height: 1px;
+    width: 99%;
+    float: right;
+    background-color: rgba(140, 140, 140, 0.5);
+}
+
+.dragging {
+    background-color: rgb(73, 73, 73);
+    opacity: 0.7;
+  }
+
+.block-label{
+    font-size: 10px;
+}
+
+.answer-checkbox{
+    width: 10px;
+    flex: 0;
+}
+.toggle-container {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-top: 1px solid rgba(140, 140, 140, 0.5)
+}
+
+.toggle-container:first-child {
+    border-top: none;
+}
+  
+.toggle-container:last-child {
+    margin-bottom: 0;
+}
+
+.toggle-label {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+  
+  .toggle-switch {
+    display: none; /* Hide the default checkbox */
+  }
+  
+  .slider {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 34px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 50px;
+    transition: background-color 0.3s, transform 0.3s;
+    transform: translateY(-50%);
+  }
+  
+  .slider:before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    transform: translateY(-50%);
+  }
+  
+  .toggle-switch:checked + .slider {
+    background-color: #4CAF50; /* Green when active */
+  }
+  
+  .toggle-switch:checked + .slider:before {
+    transform: translateX(14px) translateY(-50%); /* Move the slider to the right when checked */
+  }
