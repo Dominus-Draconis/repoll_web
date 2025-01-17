@@ -1,4 +1,5 @@
 body{
+    --large: 18px;
     font-family:Verdana, Geneva, sans-serif;
     line-height:1.5;
     background-color: black;
@@ -14,6 +15,7 @@ button{
 }
 
 input{
+    font-size: var(--large);
     flex: 1;
     background: transparent;
     border: none;
@@ -27,6 +29,7 @@ input:focus, textarea:focus{
 }
 
 textarea{
+    font-size: var(--large);
     background: transparent;
     border: none;
     color: white;
@@ -56,6 +59,7 @@ textarea{
 }
 
 .poll-title-input{
+    width: 100%;
     padding: 5px;
 }
 
@@ -119,6 +123,7 @@ textarea{
 }
 
 .toggle-label {
+    font-size: 16px;;
     flex: 1;
     display: flex;
     justify-content: space-between;

@@ -149,15 +149,15 @@
                     data += ` -l "${lightbulb}"`
                 }
             }
-            var options = [];
             for (let i = 1; i <= 10; i++) {
                 ele = document.getElementById(`answer${i}`)
                 if (ele != null){
-                    options.push(ele.value);
+                    data += ` -ca "${ele.value}"`;
                 }
             }
             data += ` -o "${options}"`
             Telegram.WebApp.sendData(data);
+            Telegram.WebApp.answerWebAppQuerry('1', data)
         }
     </script>
 </head>
@@ -165,7 +165,6 @@
 <body>
     <div class="poll-body">
         <div class="poll-header">
-            <button type="button" class="close-poll-creator" aria-label="Cancel poll creation" title="Cancel poll creation">Close</button>
             <div class="modal-title">New Poll</div>
             <button type="button" onclick="sendPoll()">Create</button>
         </div>
