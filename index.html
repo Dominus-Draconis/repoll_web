@@ -9,19 +9,25 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="robots" content="noindex,nofollow" />
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
+    <link rel="stylesheet" href="telegram.css">
     <style>
         body{
-            font-family:Verdana, Geneva, sans-serif;
-            line-height:1.5;
             background-color: var(--tg-theme-bg-color);
             color: var(--tg-theme-text-color);
-            font-size: 14px;
-            margin: 10px;
-            padding: 0px;
             color-scheme: var(--tg-color-scheme);
         }
+        input, textarea, .delete-button{
+            color: var(--tg-theme-text-color);
+        }
+        @media (prefers-color-scheme: light) {
+            .options-list, .poll-title, .settings, .quiz-explanation, .dragging{
+                background: rgb(255, 255, 255)
+            }
+        }
+        .toggle-switch:checked + .slider {
+            background-color: var(--tg-theme-accent-text-color);
+        }
     </style>
-    <link rel="stylesheet" href="telegram.css">
     <title></title>
     <script>
         let optionCount = 0;

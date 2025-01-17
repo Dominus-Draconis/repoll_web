@@ -1,5 +1,6 @@
 body{
     --large: 18px;
+    --separator-color: rgba(140, 140, 140, 0.5); 
     font-family:Verdana, Geneva, sans-serif;
     line-height:1.5;
     background-color: black;
@@ -67,7 +68,7 @@ textarea{
     display: flex;
     position: relative;
     padding: 3px;
-    border-top: 1px solid rgba(140, 140, 140, 0.5)
+    border-top: 1px solid var(--separator-color);
 } 
     
 
@@ -87,13 +88,6 @@ textarea{
     color: white;
 }
 
-.option-seperator{
-    height: 1px;
-    width: 99%;
-    float: right;
-    background-color: rgba(140, 140, 140, 0.5);
-}
-
 .dragging {
     background-color: rgb(73, 73, 73);
     opacity: 0.7;
@@ -111,7 +105,7 @@ textarea{
     display: flex;
     align-items: center;
     padding: 5px;
-    border-top: 1px solid rgba(140, 140, 140, 0.5)
+    border-top: 1px solid var(--separator-color);
 }
 
 .toggle-container:first-child {
