@@ -149,7 +149,7 @@
                     data += ` -l "${lightbulb}"`
                 }
             }
-            for (let i = 1; i <= 10; i++) {
+            for (let i = 0; i < 10; i++) {
                 ele = document.getElementById(`answer${i}`)
                 if (ele != null){
                     data += ` -ca "${ele.value}"`;
@@ -267,6 +267,27 @@
                     newOption.innerHTML = `
                         <input type="radio" name="quiz_answer" id="quiz${optionCount}"" value=${optionCount} class="answer-checkbox" style="display: ${display};">
                         <input type="text" placeholder="Add Option" oninput="addOption(${optionCount})" id="answer${optionCount}" value="${answer}">
+                        <button type="button" class="delete-button" onclick="deleteOption(${optionCount})" tabindex=-1>x</button>
+                    `;
+                    document.getElementById('optionsList').appendChild(newOption);
+                }
+                if (optionCount < 9){
+                    optionCount++;
+                    const newOption = document.createElement('div');
+                    newOption.classList.add('option-container');
+                    newOption.id = `optionContainer${optionCount}`;
+                    newOption.setAttribute('draggable', 'true');
+                    newOption.setAttribute('ondragstart', 'dragStart(event)');
+                    newOption.setAttribute('ondragover', 'allowDrop(event)');
+                    newOption.setAttribute('ondrop', 'drop(event)');
+                    const quiz = document.getElementById('quiz');
+                    var display = 'none'
+                    if (quiz.checked == true){
+                        display = "inline-block"
+                    }
+                    newOption.innerHTML = `
+                        <input type="radio" name="quiz_answer" id="quiz${optionCount}"" value=${optionCount} class="answer-checkbox" style="display: ${display};">
+                        <input type="text" placeholder="Add Option" oninput="addOption(${optionCount})" id="answer${optionCount}">
                         <button type="button" class="delete-button" onclick="deleteOption(${optionCount})" tabindex=-1>x</button>
                     `;
                     document.getElementById('optionsList').appendChild(newOption);
