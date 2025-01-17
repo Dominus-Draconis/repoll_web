@@ -151,7 +151,7 @@
             }
             for (let i = 0; i < 10; i++) {
                 ele = document.getElementById(`answer${i}`)
-                if (ele != null){
+                if (ele != null && ele != ''){
                     data += ` -ca "${ele.value}"`;
                 }
             }
