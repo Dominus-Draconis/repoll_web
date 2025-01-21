@@ -57,7 +57,6 @@
         }
         
         function deleteOption(index) {
-            console.log(index)
             if (optionCount > 0) {
                 document.getElementById(`optionContainer${index}`).remove();
                 optionCount--;
@@ -70,7 +69,6 @@
         }
         
         function updatePlaceholders() {
-            console.log('updating')
             const optionInputs = document.querySelectorAll('div[class="option-container"]');
             optionInputs.forEach((container, index) => {
             container.setAttribute('id', `optionContainer${index}`);
@@ -93,7 +91,6 @@
         }
 
         function drop(event) {
-            console.log('drop')
             event.preventDefault();
             const draggedId = event.dataTransfer.getData('text');
             const draggedElement = document.getElementById(draggedId);
@@ -246,7 +243,6 @@
             var answer = "";
             if (params.get(`a${i}`) != null){
                 answer = params.get(`a${i}`)
-                console.log(answer)
                 if (i == 0){
                     const answer_tag = document.getElementById(`answer${i}`);
                     answer_tag.value = answer;
